@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DashDataService {
+  getDeviceOptions() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http: HttpClient, private router: Router) {
   }

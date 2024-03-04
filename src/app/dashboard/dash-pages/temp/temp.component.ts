@@ -8,6 +8,7 @@ import{ DashService } from '../../dash.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { interval } from 'rxjs';
 import { FilterComponent } from '../../dash-component/filter/filter.component';
+import { DashFilterComponent } from '../../dash-component/dash-filter/dash-filter.component';
 
 @Component({
   selector: 'app-temp',
@@ -313,18 +314,20 @@ CombinedConsumption() {
     const arrow = percentageChange && percentageChange >= 0 ? '▲' : '▼';
     return { value: absValue, arrow: arrow };
   }
+  
   openDashFilterDailog(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '500px';
     dialogConfig.height = 'auto';
     dialogConfig.maxWidth = '90vw';
 
-    const dialogRef = this.dialog.open(FilterComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DashFilterComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((result) => {
       this.retrievingValues();
     });
   }
+
   retrievingValues() {
     throw new Error('Method not implemented.');
   }

@@ -18,6 +18,7 @@ export class FilterComponent {
   selectedDevice = new FormControl('', [Validators.required]);
   selectedDeviceInterval!: string;
   deviceOptions: any[] = [];
+
   selectedRadioButton!: string;
   currentDate: Date = new Date();
   startDate!: Date;
