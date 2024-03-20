@@ -1,60 +1,41 @@
 <div class="container-fluid">
-    <div class="row edit-head mb-2">
-      <div class="col-lg-12 col-md-12 col-sm-12 pt-1">
-        <div class="edit-title">Edit - Device Details</div>
-      </div>
-    </div>
-    <div *ngIf="activeDevices.length > 0">
-      <h2>Active Devices</h2>
-      <div class="row">
-        <div class="col-lg-4" *ngFor="let device of activeDevices">
-          <!-- Card for active device -->
-          <div class="card">
-            <div class="card-body">
-              <!-- Display device details -->
-              <h5 class="card-title">{{ device.DeviceName }}</h5>
-              <!-- Add more details as needed -->
+	<div class="row model-head mb-2">
+	    <div class="col-lg-12 col-md-12 col-sm-12 pt-1">
+	      <div class="model-title">Sort Devices </div>
+	    </div>
+	</div>
+	<div class="row">
+    	<div class="col-12 mb-2">
+        <mat-radio-group [formControl]="selectedSortOptionFormControl">
+          <div class="row">
+            <div class="col-12 mb-2">
+              <mat-radio-button value="DeviceName A-Z">Device Name A - Z</mat-radio-button>
+            </div>
+            <div class="col-12 mb-2">
+              <mat-radio-button value="DeviceName Z-A">Device Name Z - A</mat-radio-button>
+            </div>
+            <div class="col-12 mb-2">
+              <mat-radio-button value="DeviceUID A-Z">Device Unique ID A - Z</mat-radio-button>
+            </div>
+            <div class="col-12 mb-2">
+              <mat-radio-button value="DeviceUID Z-A">Device Unique ID Z - A</mat-radio-button>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </mat-radio-group>
+        <mat-error *ngIf="selectedSortOptionFormControl.invalid && selectedSortOptionFormControl.touched">
+          Please select a sorting option.
+        </mat-error>
   
-    <!-- Disconnected Devices -->
-    <div *ngIf="disconnectedDevices.length > 0">
-      <h2>Disconnected Devices</h2>
-      <div class="row">
-        <div class="col-lg-4" *ngFor="let device of disconnectedDevices">
-          <!-- Card for disconnected device -->
-          <div class="card">
-            <div class="card-body">
-              <!-- Display device details -->
-              <h5 class="card-title">{{ device.DeviceName }}</h5>
-              <!-- Add more details as needed -->
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
       <div class="col-12 justify-content-center d-flex mb-2">
         <div class="row">
           <div class="col">
             <button mat-raised-button (click)="onNoClick()">Close</button>
           </div>
           <div class="col">
-            <button mat-raised-button color="primary" (click)="onSaveClick()">Filter</button>
+            <button mat-raised-button color="primary" (click)="onSaveClick()">Apply</button>
           </div>
         </div>
       </div>
-  
-  <!--     <div class="col-md-12 mb-2">
-        <div class="text-center">
-          <button mat-stroked-button color="primary" class="download-button" style="width: 60%" (click)="downloadPDF()">
-            <mat-icon>file_download</mat-icon>
-            Download Report
-          </button>
-        </div>
-      </div> -->
-    </div>
-
-  
+  </div>
+</div>
